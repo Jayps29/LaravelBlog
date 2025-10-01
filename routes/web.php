@@ -5,9 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [UserController::class, 'showDataInHome'])->name('home');
+Route::get('/fullpost/{id}', [UserController::class, 'showFullPost'])->name('fullpost');
 
 Route::get('/dashboard', [UserController::class, 'home'])
 ->middleware(['auth', 'verified'])->name('dashboard');

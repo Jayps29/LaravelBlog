@@ -12,7 +12,7 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="/" class="logo">Laravel<span>Blog</span></a>
+                <a href="/" class="logo">Lara<span>Blog</span></a>
                 <div class="nav-links">
                     <a href="{{route('home')}}" class="active">Home</a>
                     <a href="">Blog</a>
@@ -47,24 +47,32 @@
 
     <!-- Featured Posts -->
     <div class="container">
-        <h2 class="section-title">Featured Posts</h2>
+        <h2 class="section-title">All Posts</h2>
         <div class="featured-posts">
-            <!-- ALL POST -->
-            @foreach($post as $posts)
-            <div class="post-card">
-                <div class="post-image">
-                    <img src="img/{{$posts -> image}}" alt="Laravel Tips">
-                </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span>{{$posts -> created_at}}</span>
+            <!-- single Post  -->
+
+            <div class="max-w-4xl mx-auto px-4 py-8">
+                <!-- Post Header -->
+                <div class="mb-8">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">{{ $post->title }}</h1>
+                    <div class="flex items-center text-gray-500 text-sm">
+                        <span>Published on {{ $post->created_at->format('F j, Y') }}</span>
+                        <span class="mx-2">•</span>
                     </div>
-                    <h3 class="post-title">{{$posts -> title}}</h3>
-                    <p class="post-excerpt">{{Str::limit($posts -> description, 100)}}...</p>
-                    <a href="{{route('fullpost', $posts  -> id)}}" class="read-more">Read More →</a>
+                </div>
+
+                <!-- Featured Image -->
+                @if($post->image)
+                <div class="mb-8 rounded-lg overflow-hidden">
+                    <img style="width: 800px;" src="{{ asset('img/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-auto object-cover">
+                </div>
+                @endif
+
+                <!-- Post Content -->
+                <div class="prose max-w-none mb-12">
+                    {!! $post->description !!}
                 </div>
             </div>
-            @endforeach
         </div>
 
         <!-- Categories -->
@@ -96,7 +104,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>About LaravelBlog</h3>
+                    <h3>About LaraBlog</h3>
                     <p>A blog dedicated to Laravel, PHP, and modern web development practices. We share tutorials, tips, and industry insights.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -125,7 +133,6 @@
                     </ul>
                 </div>
             </div>
-           
         </div>
     </footer>
 </body>
