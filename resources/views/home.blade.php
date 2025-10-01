@@ -39,7 +39,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Welcome to LaraBlog</h1>
+            <h1>Welcome to LaravelBlog</h1>
             <p>Discover amazing articles, tutorials, and insights about web development, Laravel, and modern PHP practices.</p>
             <a href="/blog" class="btn btn-primary">Browse Articles</a>
         </div>
